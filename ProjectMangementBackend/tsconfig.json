@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",                     // Modern JavaScript features
+    "module": "commonjs",                   // For Node.js
+    "rootDir": "./src",                     // Source folder
+    "outDir": "./dist",                     // Compiled JS files
+    "esModuleInterop": true,                // For importing commonjs modules like express, lodash
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,                         // Enable all strict type checks
+    "skipLibCheck": true,                   // Speeds up compilation
+    "moduleResolution": "node",             // Ensures Node module resolution
+    "resolveJsonModule": true,              // Allows importing JSON files
+    "sourceMap": true                       // Optional: Enable if you want .map files for debugging
+  },
+  "include": ["src/**/*.ts", "src/modules/AuditLog"],               // Include all TS files in src
+  "exclude": ["node_modules", "dist"]       // Don't compile dependencies or output folder
+}
