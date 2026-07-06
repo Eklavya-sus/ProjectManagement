@@ -1,0 +1,35 @@
+{
+  "name": "gql-training",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "seed": "node src/database/seed.js",
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "type": "module",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@apollo/server": "^4.12.2",
+    "@graphql-tools/graphql-file-loader": "^8.0.22",
+    "@graphql-tools/load": "^8.1.2",
+    "@graphql-tools/load-files": "^7.0.1",
+    "@graphql-tools/merge": "^9.1.1",
+    "@graphql-tools/schema": "^10.0.25",
+    "apollo-server-express": "^3.12.1",
+    "bcryptjs": "^3.0.2",
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "graphql": "^16.11.0",
+    "graphql-subscriptions": "^3.0.0",
+    "graphql-tag": "^2.12.6",
+    "graphql-ws": "^5.16.2",
+    "jsonwebtoken": "^9.0.2",
+    "lodash": "^4.17.21",
+    "mongoose": "^8.18.0",
+    "ws": "^8.18.3"
+  }
+}

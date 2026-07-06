@@ -1,0 +1,83 @@
+# modules/projectActivity/projectActivity.graphql
+
+type User {
+  id: ID!
+  name: String!
+  email: String!
+}
+
+type AuditLog {
+  id: ID!
+  action: String!
+  performedBy: User!
+  targetUser: String
+  createdAt: String!
+  message: String!
+  details: AuditLogDetails
+  displayData: AuditLogDisplayData
+}
+
+type AuditLogDetails {
+  projectId: ID
+  projectName: String
+  taskId: ID
+  taskTitle: String
+  oldStatus: String
+  newStatus: String
+  assignedToName: String
+  previousAssigneeName: String
+  addedMemberName: String
+  removedMemberName: String
+}
+
+type AuditLogDisplayData {
+  projectId: ID
+  projectName: String
+  taskId: ID
+  taskTitle: String
+  hasProject: Boolean!
+  hasTask: Boolean!
+  actionCategory: String!
+}
+
+type ActivityPagination {
+  page: Int!
+  limit: Int!
+  total: Int!
+  totalPages: Int!
+  hasMore: Boolean!
+  hasPrevious: Boolean!
+}
+
+type ProjectActivity {
+  logs: [AuditLog!]!
+  pagination: ActivityPagination!
+}
+
+input ActivityFilters {
+  actions: [String!]
+  userId: ID
+  dateFrom: String
+  dateTo: String
+}
+
+extend type Query {
+  # Get project activity logs
+  projectActivity(
+    organizationId: ID!
+    projectId: ID!
+    token: String!
+    page: Int = 1
+    limit: Int = 30
+    filters: ActivityFilters
+  ): ProjectActivity!
+}
+
+extend type Subscription {
+  # Subscribe to real-time project activity updates
+  projectActivityUpdated(
+    organizationId: ID!
+    projectId: ID!
+    token: String!
+  ): ProjectActivity!
+}
